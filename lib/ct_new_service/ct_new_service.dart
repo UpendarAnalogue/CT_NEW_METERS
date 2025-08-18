@@ -22,7 +22,7 @@ class _CtNewServiceState extends State<CtNewService> {
   String? selectedNewMeterRatio;
   String? selectedNewMeterMakeName;
   String? selectedNewMeterWarranty;
-  String? meterSatisfaction;
+  String? meterSatisfaction="Yes";
 
   final TextEditingController _controllerPO = TextEditingController();
   // ignore: non_constant_identifier_names
@@ -124,7 +124,7 @@ class _CtNewServiceState extends State<CtNewService> {
     } else if (selectedSection == null || selectedSection!.isEmpty) {
       _showAlertDialog(context,"Please Select your Section !");
     } else if (selectedDate == null) {
-      _showAlertDialog(context,"Please Select Date of Inspection");
+      _showAlertDialog(context,"Please Select Date of Charge");
     } else if (selectedNewMeterMakeName == null ||
         selectedNewMeterMakeName!.isEmpty) {
       _showAlertDialog(context,"Please Select Your Meter Make Name");
@@ -390,7 +390,7 @@ class _CtNewServiceState extends State<CtNewService> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           const Text(
-                            "Date of Inspection",
+                            "Date of Charge",
                             style: TextStyle(fontSize: 12),
                           ),
                         ],
@@ -436,7 +436,7 @@ class _CtNewServiceState extends State<CtNewService> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Divider(color: Colors.grey, thickness: 1),
+                      Divider(color: Colors.grey, thickness: 0.5),
                       SizedBox(height: 10),
 
                       Column(
@@ -507,8 +507,13 @@ class _CtNewServiceState extends State<CtNewService> {
                               counterText: "",
                             ),
                           ),
+                          
                         ],
+                        
+                        
                       ),
+                                            SizedBox(height: 10),
+
                     ],
                   ),
                 ),
@@ -548,10 +553,11 @@ class _CtNewServiceState extends State<CtNewService> {
                         isExpanded: true,
                         value: selectedNewMeterMakeName,
                         decoration: InputDecoration(
-                          // hintText: "SELECT",
+                          hintText: "SELECT",
                           border: OutlineInputBorder(),
                           // labelText: 'Select Complaint 2',
                         ),
+ 
                         items: selectNewMeterMakeName
                             .map(
                               (e) => DropdownMenuItem<String>(
@@ -601,7 +607,7 @@ class _CtNewServiceState extends State<CtNewService> {
                         isExpanded: true,
                         value: selectedNewMeterRatio,
                         decoration: InputDecoration(
-                          // hintText: "SELECT",
+                          hintText: "SELECT",
                           border: OutlineInputBorder(),
                           // labelText: 'Select Complaint 2',
                         ),
@@ -636,7 +642,7 @@ class _CtNewServiceState extends State<CtNewService> {
                         isExpanded: true,
                         value: selectedNewMeterWarranty,
                         decoration: InputDecoration(
-                          // hintText: "SELECT",
+                          hintText: "SELECT",
                           border: OutlineInputBorder(),
                           // labelText: 'Select Complaint 2',
                         ),
@@ -667,15 +673,19 @@ class _CtNewServiceState extends State<CtNewService> {
                           ),
                         ],
                       ),
+                     
                       TextField(
-                        keyboardType: TextInputType.number,
-                        maxLength: 4,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                        decoration: InputDecoration(),
-                        onChanged: (value) {},
-                      ),
+  keyboardType: TextInputType.text,  
+  inputFormatters: [
+    FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),  
+    LengthLimitingTextInputFormatter(4),  
+  ],
+  decoration: const InputDecoration(
+   ),
+  onChanged: (value) {
+    // handle input
+  },
+),
                       SizedBox(height: 12),
 
                       Row(
@@ -863,8 +873,7 @@ class _CtNewServiceState extends State<CtNewService> {
                               child: DropdownButtonFormField2<String>(
                                 decoration: myTextFieldDecoration,
                                 value: meterSatisfaction,
-                                hint: const Text("Select"),
-                                items: ["Yes", "No"]
+                                 items: ["Yes", "No"]
                                     .map(
                                       (e) => DropdownMenuItem<String>(
                                         value: e,
@@ -1000,8 +1009,7 @@ class _CtNewServiceState extends State<CtNewService> {
                               child: DropdownButtonFormField2<String>(
                                 decoration: myTextFieldDecoration,
                                 value: meterSatisfaction,
-                                hint: const Text("Select"),
-                                items: ["Yes", "No"]
+                                 items: ["Yes", "No"]
                                     .map(
                                       (e) => DropdownMenuItem<String>(
                                         value: e,
@@ -1056,7 +1064,7 @@ class _CtNewServiceState extends State<CtNewService> {
                         maxLines: null,
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
-                          hintText: "Enter your remarks here...",
+                          hintText: "Enter remarks...",
                           border: OutlineInputBorder(),
                         ),
                         onChanged: (value) {},
