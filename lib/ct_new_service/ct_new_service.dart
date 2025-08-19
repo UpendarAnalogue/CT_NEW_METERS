@@ -450,7 +450,7 @@ class _CtNewServiceState extends State<CtNewService> {
                           TextField(
                             style: const TextStyle(fontSize: 12),
                             keyboardType: TextInputType.text, // keyboard type
-                            maxLength: 4, // restrict to 4 characters
+                            maxLength: 20, // restrict to 4 characters
                             decoration: const InputDecoration(
                               isDense: true,
                               contentPadding: EdgeInsets.all(8),
@@ -473,7 +473,7 @@ class _CtNewServiceState extends State<CtNewService> {
                           TextField(
                             style: const TextStyle(fontSize: 12),
                             keyboardType: TextInputType.text, // keyboard type
-                            maxLength: 4, // restrict to 4 characters
+                            maxLength: 20, // restrict to 4 characters
                             decoration: const InputDecoration(
                               isDense: true,
                               contentPadding: EdgeInsets.all(8),
@@ -497,7 +497,7 @@ class _CtNewServiceState extends State<CtNewService> {
                           TextField(
                             style: const TextStyle(fontSize: 12),
                             keyboardType: TextInputType.number,
-                            maxLength: 4,
+                            maxLength: 20,
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly,
                             ],
